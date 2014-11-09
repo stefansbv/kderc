@@ -27,8 +27,7 @@ sub execute {
     while ( $iter->has_next ) {
         my $rec = $iter->next;
         $rec->file('kdetest') if $self->dryrun;
-        # dd $rec;
-        $self->configure($rec);
+        $self->configure($rec, $self->dryrun);
     }
 
     say "";

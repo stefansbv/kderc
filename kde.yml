@@ -7,281 +7,293 @@ kde:
 settings:
   -
      file: kdeglobals
-     group: "KDE-Global GUI Settings"
-     key: "GraphicEffectsLevel"
+     group: KDE-Global GUI Settings
+     key: GraphicEffectsLevel
      value: 0
   -
      file: kdeglobals
-     group: "General"
-     key: "desktopFont"
-     value: "Terminus,11,-1,5,50,0,0,0,0,0"
+     group: General
+     key: desktopFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
   -
      file: kdeglobals
-     group: "General"
-     key: "fixed"
-     value: "Terminus,11,-1,5,50,0,0,0,0,0"
+     group: General
+     key: fixed
+     value: Terminus,11,-1,5,50,0,0,0,0,0
   -
      file: kdeglobals
-     group: "General"
-     key: "font"
-     value: "Terminus,11,-1,5,50,0,0,0,0,0"
+     group: General
+     key: font
+     value: Terminus,11,-1,5,50,0,0,0,0,0
   -
      file: kdeglobals
-     group: "General"
-     key: "menuFont"
-     value: "Terminus,11,-1,5,50,0,0,0,0,0"
+     group: General
+     key: menuFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
   -
      file: kdeglobals
-     group: "General"
-     key: "smallestReadableFont"
-     value: "Terminus,11,-1,5,50,0,0,0,0,0"
+     group: General
+     key: smallestReadableFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
   -
      file: kdeglobals
-     group: "General"
-     key: "taskbarFont"
-     value: "Terminus,11,-1,5,50,0,0,0,0,0"
+     group: General
+     key: taskbarFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
   -
      file: kdeglobals
-     group: "General"
-     key: "toolBarFont"
-     value: "Terminus,11,-1,5,50,0,0,0,0,0"
+     group: General
+     key: toolBarFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
   -
      file: kdeglobals
-     group: "General"
-     key: "activeFont"
-     value: "Terminus,11,-1,5,50,0,0,0,0,0"
+     group: General
+     key: activeFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
   -
      file: kdeglobals
-     group: "WM"
-     key: "activeFont"
-     value: "Terminus,11,-1,5,50,0,0,0,0,0"
+     group: WM
+     key: activeFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
   -
      file: plasma-desktop-appletsrc
-     group: "General"
-     key: "fontTime"
-     value: "Terminus,11,-1,5,50,0,0,0,0,0"
+     group: General
+     key: fontTime
+     value: Terminus,11,-1,5,50,0,0,0,0,0
   -
      file: startupconfig
-     group: "ksplashrc KSplash Theme Default"
-     key: "ksplashrc_ksplash_theme"
+     group: ksplashrc KSplash Theme Default
+     key: ksplashrc_ksplash_theme
      value: Minimalistic
   -
      ## note that the theme depends on the engine setting,
      ## it will not function otherwise
      file: ksplashrc
-     group: "KSplash"
-     key: "Engine"
+     group: KSplash
+     key: Engine
      value: KSplashQML
   -
      file: ksplashrc
-     group: "KSplash"
-     key: "Theme"
+     group: KSplash
+     key: Theme
      value: Minimalistic
   -
      file: kwinrc
-     group: "Windows"
-     key: "FocusPolicy"
+     group: Windows
+     key: FocusPolicy
      value: FocusFollowsMouse
   -
      file: kwinrc
-     group: "Windows"
-     key: "AutoRaise"
+     group: Windows
+     key: AutoRaise
      value: true
   -
      file: kwinrc
-     group: "Windows"
-     key: "AutoRaiseInterval"
+     group: Windows
+     key: AutoRaiseInterval
      value: 500
   -
      file: kwinrc
-     group: "Windows"
-     key: "DelayFocusInterval"
+     group: Windows
+     key: DelayFocusInterval
      value: 500
   -
      file: kwinrc
-     group: "Windows"
-     key: "FocusStealingPreventionLevel"
+     group: Windows
+     key: FocusStealingPreventionLevel
      value: 2
   -
      file: kwinrc
-     group: "Plugins"
-     key: "kwin4_effect_wobblywindowsEnabled"
+     group: Plugins
+     key: kwin4_effect_wobblywindowsEnabled
      value: true
   -
      file: kwinrc
-     group: "Plugins"
-     key: "kwin4_effect_cubeEnabled"
+     group: Plugins
+     key: kwin4_effect_cubeEnabled
      value: true
   -
      file: kwinrc
-     group: "Plugins"
-     key: "kwin4_effect_cubeslideEnabled"
+     group: Plugins
+     key: kwin4_effect_cubeslideEnabled
      value:  true
   -
      file: kwinrc
-     group: "Compositing"
-     key: "UnredirectFullscreen"
+     group: Compositing
+     key: UnredirectFullscreen
      value: true
   -
      file: kwinrc
-     group: "Compositing"
-     key: "AnimationSpeed"
+     group: Compositing
+     key: AnimationSpeed
      value: 1
   -
      file: ksmserverrc
-     group: "General"
-     key: "confirmLogout"
+     group: General
+     key: confirmLogout
      value: false
   -
      file: ksmserverrc
-     group: "General"
-     key: "shutdownType"
+     group: General
+     key: shutdownType
      value: 1
   -
      file: ksmserverrc
-     group: "General"
-     key: "loginMode"
+     group: General
+     key: loginMode
      value: default
   -
      file: katerc
-     group: "TipOfDay"
-     key: "RunOnStart"
+     group: TipOfDay
+     key: RunOnStart
      value: false
   -
      file: katerc
-     group: "General"
-     key: "Show Full Path in Title"
+     group: General
+     key: Show Full Path in Title
      value: true
   -
      file: katerc
-     group: "Kate Document Defaults"
-     key: "Encoding"
+     group: Kate Document Defaults
+     key: Encoding
      value: UTF-8
   -
      file: katerc
-     group: "Kate Document Defaults"
-     key: "ReplaceTabsDyn"
+     group: Kate Document Defaults
+     key: ReplaceTabsDyn
      value: true
   -
      file: katerc
-     group: "Kate Document Defaults"
-     key: "Tab Handling"
+     group: Kate Document Defaults
+     key: Tab Handling
      value: 2
   -
      file: katerc
-     group: "Kate Document Defaults"
-     key: "Tab Width"
+     group: Kate Document Defaults
+     key: Tab Width
      value: 2
   -
      file: katerc
-     group: "Kate Document Defaults"
-     key: "Word Wrap"
+     group: Kate Document Defaults
+     key: Word Wrap
      value: true
   -
      file: katerc
-     group: "Kate Document Defaults"
-     key: "Indentation Width"
+     group: Kate Document Defaults
+     key: Indentation Width
      value: 2
   -
      file: katerc
-     group: "Kate Document Defaults"
-     key: "Newline At EOF"
+     group: Kate Document Defaults
+     key: Newline At EOF
      value: true
   -
      file: katerc
-     group: "Kate Part Defaults"
-     key: "Fallback Encoding"
+     group: Kate Part Defaults
+     key: Fallback Encoding
      value: UTF-8
   -
      ## turns on global shortcut for konsole, ctrl + alt + t
      file: khotkeysrc
-     group: "Data_2"
-     key: "Enabled"
+     group: Data_2
+     key: Enabled
      value: true
   -
      file: khotkeysrc
-     group: "Data_2_3"
-     key: "Enabled"
+     group: Data_2_3
+     key: Enabled
      value: true
   -
      file: khotkeysrc
-     group: "Data_4"
-     key: "Enabled"
+     group: Data_4
+     key: Enabled
      value: true
   -
      file: khotkeysrc
-     group: "Data_4_3"
-     key: "Enabled"
+     group: Data_4_3
+     key: Enabled
      value: true
   -
      file: powermanagementprofilesrc
-     group: "AC"
-     subgroup: "DimDisplay"
-     key: "idleTime"
+     group:
+       - AC
+       - DimDisplay
+     key: idleTime
      value: 600000
   -
      file: powermanagementprofilesrc
-     group: "Battery"
-     subgroup: "DimDisplay"
-     key: "idleTime"
+     group:
+       - Battery
+       - DimDisplay
+     key: idleTime
      value: 600000
   -
      file: powermanagementprofilesrc
-     group: "LowBattery"
-     subgroup: "DimDisplay"
-     key: "idleTime"
+     group:
+       - LowBattery
+       - DimDisplay
+     key: idleTime
      value: 600000
   -
      file: powermanagementprofilesrc
-     group: "AC"
-     subgroup: "DPMSControl"
-     key: "idleTime"
+     group:
+       - AC
+       - DPMSControl
+     key: idleTime
      value: 600
   -
      file: powermanagementprofilesrc
-     group: "Battery"
-     subgroup: "DPMSControl"
-     key: "idleTime"
+     group:
+       - Battery
+       - DPMSControl
+     key: idleTime
      value: 600
   -
      file: powermanagementprofilesrc
-     group: "LowBattery"
-     subgroup: "DPMSControl"
-     key: "idleTime"
+     group:
+       - LowBattery
+       - DPMSControl
+     key: idleTime
      value: 600
   -
      file: powermanagementprofilesrc
-     group: "AC"
-     subgroup: "SuspendSession"
-     key: "idleTime"
+     group:
+       - AC
+       - SuspendSession
+     key: idleTime
      value: 600000
   -
      file: powermanagementprofilesrc
-     group: "Battery"
-     subgroup: "SuspendSession"
-     key: "idleTime"
+     group:
+       - Battery
+       - SuspendSession
+     key: idleTime
      value: 600000
   -
      file: powermanagementprofilesrc
-     group: "LowBattery"
-     subgroup: "SuspendSession"
-     key: "idleTime"
+     group:
+       - LowBattery
+       - SuspendSession
+     key: idleTime
      value: 600000
   -
      file: powermanagementprofilesrc
-     group: "AC"
-     subgroup: "BrightnessControl"
-     key: "value"
+     group:
+       - AC
+       - BrightnessControl
+     key: value
      value: 100
   -
      file: powermanagementprofilesrc
-     group: "Battery"
-     subgroup: "BrightnessControl"
-     key: "value"
+     group:
+       - Battery
+       - BrightnessControl
+     key: value
      value: 100
   -
      file: powermanagementprofilesrc
-     group: "LowBattery"
-     subgroup: "BrightnessControl"
-     key: "value"
+     group:
+       - LowBattery
+       - BrightnessControl
+     key: value
      value: 80
