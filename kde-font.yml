@@ -1,0 +1,57 @@
+---
+kde:
+  version: 4
+  subversion: 14
+  patch: 2
+  configpath: ~/.kde
+settings:
+  -
+     file: kdeglobals
+     group: General
+     key: desktopFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
+  -
+     file: kdeglobals
+     group: General
+     key: fixed
+     value: Terminus,11,-1,5,50,0,0,0,0,0
+  -
+     file: kdeglobals
+     group: General
+     key: font
+     value: Terminus,11,-1,5,50,0,0,0,0,0
+  -
+     file: kdeglobals
+     group: General
+     key: menuFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
+  -
+     file: kdeglobals
+     group: General
+     key: smallestReadableFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
+  -
+     file: kdeglobals
+     group: General
+     key: taskbarFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
+  -
+     file: kdeglobals
+     group: General
+     key: toolBarFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
+  -
+     file: kdeglobals
+     group: General
+     key: activeFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
+  -
+     file: kdeglobals
+     group: WM
+     key: activeFont
+     value: Terminus,11,-1,5,50,0,0,0,0,0
+  -
+     file: plasma-desktop-appletsrc
+     group: General
+     key: fontTime
+     value: Terminus,11,-1,5,50,0,0,0,0,0

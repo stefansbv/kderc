@@ -1,0 +1,19 @@
+---
+kde:
+  version: 4
+  subversion: 14
+  patch: 2
+  configpath: ~/.kde
+settings:
+  -
+     file: kdeglobals
+     group: KDE-Global GUI Settings
+     key: GraphicEffectsLevel
+     value: 0
+  -
+     file: powermanagementprofilesrc
+     group:
+       - AC
+       - SuspendSession
+     key: idleTime
+     value: 600000

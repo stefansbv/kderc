@@ -14,6 +14,7 @@ use YAML::Tiny;
 use Try::Tiny;
 
 use App::KdeRc::Resource::Read;
+use App::KdeRc::Resource::Write;
 use App::KdeRc::Resource::Element;
 use App::KdeRc::Resource::Metadata;
 
@@ -80,6 +81,17 @@ has 'reader' => (
     default => sub {
         my $self = shift;
         App::KdeRc::Resource::Read->new(
+            resource_file => $self->resource_file );
+    },
+);
+
+has 'writer' => (
+    is      => 'rw',
+    isa     => 'App::KdeRc::Resource::Write',
+    lazy    => 1,
+    default => sub {
+        my $self = shift;
+        App::KdeRc::Resource::Write->new(
             resource_file => $self->resource_file );
     },
 );

@@ -1,6 +1,6 @@
-package App::KdeRc::Command::Run;
+package App::KdeRc::Command::Export;
 
-# ABSTRACT: Run the command
+# ABSTRACT: Export as shell script
 
 use 5.010001;
 use utf8;
@@ -32,9 +32,7 @@ sub execute {
 
     while ( $iter->has_next ) {
         my $rec = $iter->next;
-        $self->collect($rec);
-        $rec->file('kdetest') if $self->dryrun; # overwrite output file
-        $self->configure($rec, $self->dryrun);
+        $self->export_script($rec);
     }
 
     return;

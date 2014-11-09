@@ -1,6 +1,6 @@
-package App::ConfigManager::Exceptions;
+package App::KdeRc::Exceptions;
 
-# ABSTRACT: Config Manager Exceptions
+# ABSTRACT: KdeRc Exceptions
 
 use strict;
 use warnings;
