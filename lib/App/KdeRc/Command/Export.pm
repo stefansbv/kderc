@@ -10,8 +10,6 @@ use namespace::autoclean;
 
 extends qw(App::KdeRc);
 
-with qw(App::KdeRc::Utils);
-
 use App::KdeRc::Resource;
 
 sub execute {
@@ -32,9 +30,16 @@ sub execute {
 
     while ( $iter->has_next ) {
         my $rec = $iter->next;
-        $self->export_script($rec);
+        # collect commands
     }
+    $self->export_script;
+    return;
 
+}
+
+sub export_script {
+    my $self = shift;
+    warn "Not implemented yet.\n";
     return;
 }
 

@@ -92,7 +92,7 @@ has 'writer' => (
     default => sub {
         my $self = shift;
         App::KdeRc::Resource::Write->new(
-            resource_file => $self->resource_file );
+            resource_file => $self->reset_file_path );
     },
 );
 
