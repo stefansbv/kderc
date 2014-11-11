@@ -84,8 +84,9 @@ has 'reset_file_path' => (
     required => 1,
     default  => sub {
         my $self = shift;
-        my ( $name, $path, $ext )
-            = fileparse( $self->resource_file, qr/\.[^\.]+/ );
+        my $file = $self->resource_file;
+        my ( $name, $path, $ext ) = fileparse( $file, qr/\.[^\.]+/ );
+        $name =~ s{-reset.+$}{};
         return path( $path, "${name}-reset$ext" );
     },
 );
