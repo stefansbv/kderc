@@ -5,7 +5,7 @@ kderc
 
 Version: 0.005 alpha
 
-`KDE` configuration helper tool.
+A `KDE` configuration helper tool.
 
 
 Acknowledgements
@@ -19,13 +19,13 @@ Thank you!
 Description
 -----------
 
-The main difference between this application and `kdeSetup.sh` script
-is that the `KDE` configuration options are stored separately in a `YAML`
-file.
+The main difference between this application and the `kdeSetup.sh`
+script is that the `KDE` configuration options are stored separately
+in a `YAML` file.
 
 Another important difference is a feature to read and collect the
-existing configuration before applying the new configuration and
-create a so called reset `YAML` file.  This reset file can be used to
+existing configurations before applying the new configurations and
+create a so called `reset` `YAML` file.  This reset file can be used to
 restore the old configurations.
 
 A planned feature is to implement the export command.  This command
@@ -76,14 +76,21 @@ Run the KDE configure commands but use `--dryrun`, first, to see how
 the commands will look like and how will be the values changed:
 
 ```
-% kderc run --in kde-fonts.yml --dryrun
+% kderc run --in examples/kde-fonts.yml --dryrun
 ```
 
 Change the KDE fonts configuration section:
 
 ```
-% kderc run --in kde-fonts.yml
+% kderc run --in examples/kde-fonts.yml
 ```
+
+We can now restore the old setings, if we want:
+
+```
+% kderc run --in examples/kde-fonts-reset-2014-11-11T17:11:58.yml
+```
+
 
 License And Copyright
 ---------------------
