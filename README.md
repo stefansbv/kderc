@@ -28,6 +28,10 @@ existing configuration before applying the new configuration and
 create a so called reset `YAML` file.  This reset file can be used to
 restore the old configurations.
 
+A planned feature is to implement the export command.  This command
+will generate a custom shell script like the `kdeSetup.sh` from the
+`linuxTweaks` project.
+
 The down side of this approach is a much heavier dependency chain, in
 this particular case: Perl and a number of required modules (`Moose`,
 `MooseX::App`, etc.).
