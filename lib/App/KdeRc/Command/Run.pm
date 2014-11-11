@@ -24,11 +24,12 @@ sub execute {
     say "";
     say "# KDE version: ", $self->kde_version;
     say "# Resource   : ";
-    say "#   file       : ", $self->resource_file;
-    say "#   KDE version: ", $res->metadata->version
+    say "#   file        : ", $self->resource_file;
+    say "#   KDE version : ", $res->metadata->version
         .'.'. $res->metadata->subversion
         .'.'. $res->metadata->patch;
-    say "#   config path: ", $res->metadata->configpath;
+    say "#   config path : ", $res->metadata->configpath;
+    say '#   config count: ', $res->count;
     say "";
 
     my @origs;
