@@ -12,17 +12,27 @@ Acknowledgements
 ----------------
 
 Inspired from the `kdeSetup.sh` script of the
-[linuxTweaks](https://github.com/ryanpcmcquen/linuxTweaks) project.  Thank you!
-
-
-Features
---------
+[linuxTweaks](https://github.com/ryanpcmcquen/linuxTweaks) project.
+Thank you!
 
 
 Description
 -----------
 
-Two items in the `kde-font.yml` file:
+The main difference between this application and `kdeSetup.sh` script
+is that the KDE configuration options are stored separately in a YAML
+file.
+
+Another important difference is a feature to read and collect the
+existing configuration before applying the new configuration and
+create a so called reset YAML file.  This reset file can be used to
+restore the old configurations.
+
+The down side of this approach is a much heavier dependency chain, in
+this particular case: Perl and a number of required modules (Moose,
+MooseX::App...).
+
+Two items in the `kde-font.yml` example configuration file:
 
 ```YAML
 ---
@@ -49,7 +59,10 @@ KDE4:
 - kwriteconfig
 - kreadconfig
 
-Perl and the required modules.
+Perl:
+- Moose
+- MooseX::App
+- (...)
 
 
 Quick Usage
