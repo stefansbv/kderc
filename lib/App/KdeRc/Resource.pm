@@ -88,9 +88,9 @@ has 'reset_file_path' => (
         my $file = $self->resource_file;
         my ( $name, $path, $ext ) = fileparse( $file, qr/\.[^\.]+/ );
         $name =~ s{-reset.+$}{};
-        my $dt = DateTime->now; # same as ( epoch => time() )
+        my $dt = DateTime->now;
         my $datetime = $dt->datetime;
-        # $datetime =~ s{[-:]}{}g; ?
+        $datetime =~ s{[:]}{_}g;
         $name = "${name}-reset-${datetime}$ext";
         return path( $path, $name );
     },
