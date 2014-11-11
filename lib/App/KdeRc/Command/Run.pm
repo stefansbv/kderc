@@ -8,76 +8,71 @@ use utf8;
 use MooseX::App::Command;
 use namespace::autoclean;
 
+with qw(MooseX::Clone);
+
 extends qw(App::KdeRc);
 
 use App::KdeRc::Resource;
-use App::KdeRc::Resource::Write;
 
 sub execute {
     my ( $self ) = @_;
 
-    my $res  = App::KdeRc::Resource->new( resource_file => $self->file );
+    my $res = App::KdeRc::Resource->new(
+        resource_file => $self->resource_file );
     my $iter = $res->resource_iter;
 
     say "";
-    say "KDE version = ", $self->kde_version;
-    say "Resource:";
-    say "  File        = ", $self->file;
-    say "  Version     = ", $res->metadata->version;
-    say "  Subversion  = ", $res->metadata->subversion;
-    say "  Patch       = ", $res->metadata->patch;
-    say "  Config path = ", $res->metadata->configpath;
+    say "# KDE version: ", $self->kde_version;
+    say "# Resource   : ";
+    say "#   file       : ", $self->resource_file;
+    say "#   KDE version: ", $res->metadata->version
+        .'.'. $res->metadata->subversion
+        .'.'. $res->metadata->patch;
+    say "#   config path: ", $res->metadata->configpath;
     say "";
 
+    my @origs;
     while ( $iter->has_next ) {
-        my $rec = $iter->next;
-
+        my $rec  = $iter->next;
+        my $orig = $rec->clone;
         my $current_value = $self->kde_config_read($rec);
-
+        $orig->value($current_value);
+        push @origs, $orig;
         $rec->file( $self->test_file_name )
             if $self->dryrun;    # overwrite output file
-
         $self->kde_config_write($rec, $self->dryrun);
     }
 
-    # Test
-    $self->write_reset_file;
+    $self->kde_config_write_reset( $res, @origs );
 
-    say "Output file path: ", $self->test_file_path->stringify
+    say "Output file path [dry-run]: ", $self->test_file_path->stringify
         if $self->dryrun;
 
     return;
 }
 
-sub write_reset_file {
-    my $self = shift;
-
-    my $reset = $self->reset_file_path;
-
-    my $rw = App::KdeRc::Resource::Write->new( resource_file => $reset );
-
-    # Test data
-    my $data = {
-        settings => [
-            {   group => [ 'AC', 'SuspendSession' ],
-                value => '600000',
-                file  => 'powermanagementprofilesrc',
-                key   => 'idleTime'
-            },
-        ],
-        kde => {
-            version    => '4',
-            patch      => '2',
-            configpath => '~/.kde',
-            subversion => '14'
-        }
+sub kde_config_write_reset {
+    my ($self, $res, @data) = @_;
+    my $metadata = {
+        configpath => $res->metadata->configpath,
+        patch      => $res->metadata->patch,
+        subversion => $res->metadata->subversion,
+        version    => $res->metadata->version,
     };
-
-    $rw->metadata( $data->{kde} );
-    $rw->contents( $data->{settings} );
-    $rw->create_yaml;
-
-    say "Write reset file: $reset...done";
+    my @settings;
+    foreach my $rec (@data) {
+        push @settings, {
+            file  => $rec->file,
+            group => $rec->group,
+            key   => $rec->key,
+            value => $rec->value,
+        };
+    }
+    $res->writer->metadata($metadata);
+    $res->writer->contents(\@settings);
+    $res->writer->create_yaml;
+    my $reset_file = $res->reset_file_path;
+    say "Wrote reset file: $reset_file.";
     return;
 }
 

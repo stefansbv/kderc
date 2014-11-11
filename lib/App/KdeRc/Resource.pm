@@ -7,11 +7,13 @@ use utf8;
 
 use Moose;
 use MooseX::Iterator;
-use MooseX::Types::Path::Tiny qw(Path);
+use MooseX::Types::Path::Tiny qw(File Path);
 use namespace::autoclean;
 
 use YAML::Tiny;
 use Try::Tiny;
+use Path::Tiny;
+use File::Basename;
 
 use App::KdeRc::Resource::Read;
 use App::KdeRc::Resource::Write;
@@ -70,8 +72,22 @@ has 'resource_iter' => (
 );
 
 has 'resource_file' => (
-    is  => 'rw',
-    isa => Path,
+    is     => 'rw',
+    isa    => File,
+    coerce => 1,
+);
+
+has 'reset_file_path' => (
+    is       => 'ro',
+    isa      => Path,
+    lazy     => 1,
+    required => 1,
+    default  => sub {
+        my $self = shift;
+        my ( $name, $path, $ext )
+            = fileparse( $self->resource_file, qr/\.[^\.]+/ );
+        return path( $path, "${name}-reset$ext" );
+    },
 );
 
 has 'reader' => (

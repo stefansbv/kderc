@@ -7,9 +7,7 @@ use Moose;
 use 5.0100;
 
 use MooseX::App qw(Color);
-use MooseX::Types::Path::Tiny qw(Path);
-use Path::Tiny;
-use File::Basename;
+use MooseX::Types::Path::Tiny qw(Path File);
 
 with qw(App::KdeRc::Role::Utils);
 
@@ -18,7 +16,7 @@ app_namespace 'App::KdeRc::Command';
 option 'dryrun' => (
     is            => 'rw',
     isa           => 'Bool',
-    documentation => q[Simulate run commands.  Output to kdetest.],
+    documentation => q[Redirect the output to 'KDEtest.ini'.],
 );
 
 option 'verbose' => (
@@ -27,12 +25,22 @@ option 'verbose' => (
     documentation => q[Verbose output.],
 );
 
-option 'file' => (
-    is       => 'ro',
-    isa      => Path,
-    required => 1,
-    coerce   => 1,
-    documentation => q[Path to the YAML KDE config file.],
+option 'resource_file' => (
+    is            => 'ro',
+    isa           => File,
+    required      => 1,
+    coerce        => 1,
+    cmd_flag      => 'in',
+    documentation => q[The input YAML config file.],
+);
+
+option 'file_out' => (
+    is            => 'ro',
+    isa           => Path,
+    required      => 0,
+    coerce        => 1,
+    documentation => q[The output YAML config reset file.],
+    cmd_flag      => 'out',
 );
 
 has 'test_file_name' => (
@@ -40,17 +48,6 @@ has 'test_file_name' => (
     isa      => 'Str',
     required => 1,
     default  => sub {'KDEtest.ini'},
-);
-
-has 'reset_file_path' => (
-    is       => 'ro',
-    isa      => Path,
-    required => 1,
-    default  => sub {
-        my $self = shift;
-        my ($name, $path, $ext) = fileparse( $self->file, qr/\.[^\.]+/ );
-        return path( $path, "${name}-reset$ext" );
-    },
 );
 
 has 'kde_version' => (

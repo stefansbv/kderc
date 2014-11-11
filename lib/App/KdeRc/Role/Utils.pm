@@ -30,6 +30,7 @@ sub get_kde_version {
     die "Can't determine KDE version!\n Error: $stderr"     if $stderr;
     die "Can't determine KDE version! Error: exitval=$exit" if $exit != 0;
     die "Can't determine KDE version! Error: no output"     if !$stdout;
+    chomp $stdout;
     return $stdout;
 }
 

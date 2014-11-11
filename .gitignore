@@ -19,4 +19,4 @@ t/output
 .build
 resource.yml
 .al
-*-reset.yml
+examples/*reset.yml
