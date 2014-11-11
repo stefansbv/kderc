@@ -14,6 +14,7 @@ use YAML::Tiny;
 use Try::Tiny;
 use Path::Tiny;
 use File::Basename;
+use DateTime;
 
 use App::KdeRc::Resource::Read;
 use App::KdeRc::Resource::Write;
@@ -87,7 +88,11 @@ has 'reset_file_path' => (
         my $file = $self->resource_file;
         my ( $name, $path, $ext ) = fileparse( $file, qr/\.[^\.]+/ );
         $name =~ s{-reset.+$}{};
-        return path( $path, "${name}-reset$ext" );
+        my $dt = DateTime->now; # same as ( epoch => time() )
+        my $datetime = $dt->datetime;
+        # $datetime =~ s{[-:]}{}g; ?
+        $name = "${name}-reset-${datetime}$ext";
+        return path( $path, $name );
     },
 );
 

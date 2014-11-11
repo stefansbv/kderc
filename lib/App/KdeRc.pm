@@ -1,6 +1,6 @@
 package App::KdeRc;
 
-# ABSTRACT: Configure KDE
+# ABSTRACT: A KDE configuration helper tool
 
 use utf8;
 use Moose;
