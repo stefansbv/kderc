@@ -12,7 +12,7 @@ Acknowledgements
 ----------------
 
 Inspired from the `kdeSetup.sh` script of the
-(https://github.com/ryanpcmcquen/linuxTweaks)[linuxTweaks] project.  Thank you!
+[linuxTweaks](https://github.com/ryanpcmcquen/linuxTweaks) project.  Thank you!
 
 
 Features
