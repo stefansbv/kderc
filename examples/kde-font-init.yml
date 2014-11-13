@@ -1,0 +1,48 @@
+---
+kde:
+  version: 4
+  subversion: 14
+  patch: 2
+  configpath: '~/.kde'
+  description: 'Initial font configuration for KDE 4.14.3 on Slackware'
+settings:
+  -
+     file: kdeglobals
+     group: General
+     key: desktopFont
+     value: 'Sans Serif,9,-1,5,50,0,0,0,0,0'
+  -
+     file: kdeglobals
+     group: General
+     key: fixed
+     value: 'Monospace,9,-1,5,50,0,0,0,0,0'
+  -
+     file: kdeglobals
+     group: General
+     key: font
+     value: 'Sans Serif,9,-1,5,50,0,0,0,0,0'
+  -
+     file: kdeglobals
+     group: General
+     key: menuFont
+     value: 'Sans Serif,9,-1,5,50,0,0,0,0,0'
+  -
+     file: kdeglobals
+     group: General
+     key: smallestReadableFont
+     value: 'Sans Serif,8,-1,5,50,0,0,0,0,0'
+  -
+     file: kdeglobals
+     group: General
+     key: taskbarFont
+     value: 'Sans Serif,9,-1,5,50,0,0,0,0,0'
+  -
+     file: kdeglobals
+     group: General
+     key: toolBarFont
+     value: 'Sans Serif,8,-1,5,50,0,0,0,0,0'
+  -
+     file: kdeglobals
+     group: WM
+     key: activeFont
+     value: 'Sans Serif,8,-1,5,50,0,0,0,0,0'

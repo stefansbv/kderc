@@ -2,56 +2,62 @@
 kde:
   version: 4
   subversion: 14
-  patch: 2
-  configpath: ~/.kde
+  patch: 3
+  configpath: '~/.kde'
+  description: 'My preferred font configuration for KDE 4.14.3 on Slackware'
 settings:
   -
-     file: kdeglobals
-     group: General
-     key: desktopFont
-     value: Terminus,11,-1,5,50,0,0,0,0,0
+    file: kdeglobals
+    group: General
+    key: desktopFont
+    value: 'Sans Serif,10,-1,5,50,0,0,0,0,0'
   -
-     file: kdeglobals
-     group: General
-     key: fixed
-     value: Terminus,11,-1,5,50,0,0,0,0,0
+    file: kdeglobals
+    group: General
+    key: fixed
+    value: 'Monospace,10,-1,5,50,0,0,0,0,0'
   -
-     file: kdeglobals
-     group: General
-     key: font
-     value: Terminus,11,-1,5,50,0,0,0,0,0
+    file: kdeglobals
+    group: General
+    key: font
+    value: 'Sans Serif,10,-1,5,50,0,0,0,0,0'
   -
-     file: kdeglobals
-     group: General
-     key: menuFont
-     value: Terminus,11,-1,5,50,0,0,0,0,0
+    file: kdeglobals
+    group: General
+    key: menuFont
+    value: 'Sans Serif,10,-1,5,50,0,0,0,0,0'
   -
-     file: kdeglobals
-     group: General
-     key: smallestReadableFont
-     value: Terminus,11,-1,5,50,0,0,0,0,0
+    file: kdeglobals
+    group: General
+    key: smallestReadableFont
+    value: 'Sans Serif,8,-1,5,50,0,0,0,0,0'
   -
-     file: kdeglobals
-     group: General
-     key: taskbarFont
-     value: Terminus,11,-1,5,50,0,0,0,0,0
+    file: kdeglobals
+    group: General
+    key: taskbarFont
+    value: 'Sans Serif,10,-1,5,50,0,0,0,0,0'
   -
-     file: kdeglobals
-     group: General
-     key: toolBarFont
-     value: Terminus,11,-1,5,50,0,0,0,0,0
+    file: kdeglobals
+    group: General
+    key: toolBarFont
+    value: 'Sans Serif,8,-1,5,50,0,0,0,0,0'
   -
-     file: kdeglobals
-     group: General
-     key: activeFont
-     value: Terminus,11,-1,5,50,0,0,0,0,0
+    file: kdeglobals
+    group: WM
+    key: activeFont
+    value: 'Sans Serif,10,-1,5,50,0,0,0,0,0'
   -
-     file: kdeglobals
-     group: WM
-     key: activeFont
-     value: Terminus,11,-1,5,50,0,0,0,0,0
+    file: kdeglobals
+    group: General
+    key: XftAntialias
+    value: true
   -
-     file: plasma-desktop-appletsrc
-     group: General
-     key: fontTime
-     value: Terminus,11,-1,5,50,0,0,0,0,0
+    file: kdeglobals
+    group: General
+    key: XftHintStyle
+    value: hintmedium
+  -
+    file: kdeglobals
+    group: General
+    key: XftSubPixel
+    value: none

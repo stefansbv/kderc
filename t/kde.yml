@@ -4,6 +4,7 @@ kde:
   subversion: 14
   patch: 2
   configpath: ~/.kde
+  description: 'KDE test configs'
 settings:
   -
      file: kdeglobals

@@ -1,6 +1,6 @@
 # -*- mode-cperl -*-
 #
-# Test the Resource::Element object container
+# Test the Resource::Element object
 #
 use 5.010;
 use strict;

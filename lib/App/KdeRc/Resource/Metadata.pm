@@ -21,7 +21,7 @@ has 'subversion' => (
 has 'patch' => (
     is       => 'ro',
     isa      => 'Str',
-    required => 1,
+    required => 0,
 );
 
 has 'configpath' => (
@@ -30,6 +30,11 @@ has 'configpath' => (
     required => 1,
 );
 
+has 'description' => (
+    is       => 'ro',
+    isa      => 'Str',
+    required => 0,
+);
 
 __PACKAGE__->meta->make_immutable;
 

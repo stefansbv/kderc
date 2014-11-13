@@ -58,11 +58,6 @@ sub kde_config_read {
     push @args, '--key', quote_string($rec->key);
     my ( $stdout, $stderr, $exit ) = capture { system( $cmd, @args ) };
     chomp $stdout;
-    # TODO: Export as shell script
-    # say "#C: $cmd @args";
-    # say "#R: $stdout";
-    # say "#W: ", quote_string($rec->value);
-    # say "";
     die "Can't execute '$cmd'!\n Error: $stderr"     if $stderr;
     die "Can't execute '$cmd'! Error: exitval=$exit" if $exit != 0;
     return $stdout;
