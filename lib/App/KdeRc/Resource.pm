@@ -73,9 +73,17 @@ has 'resource_iter' => (
 );
 
 has 'resource_file' => (
-    is     => 'rw',
-    isa    => File,
-    coerce => 1,
+    is       => 'rw',
+    isa      => File,
+    coerce   => 1,
+    required => 1,
+);
+
+has 'resource_reset_file' => (
+    is       => 'rw',
+    isa      => Path,
+    coerce   => 1,
+    required => 0,
 );
 
 has 'reset_file_path' => (
@@ -85,6 +93,7 @@ has 'reset_file_path' => (
     required => 1,
     default  => sub {
         my $self = shift;
+        return $self->resource_reset_file if $self->resource_reset_file;
         my $file = $self->resource_file;
         my ( $name, $path, $ext ) = fileparse( $file, qr/\.[^\.]+/ );
         $name =~ s{-reset.+$}{};

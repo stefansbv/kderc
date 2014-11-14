@@ -34,12 +34,12 @@ option 'resource_file' => (
     documentation => q[The input YAML config file.],
 );
 
-option 'file_out' => (
+option 'resource_reset_file' => (
     is            => 'ro',
     isa           => Path,
     required      => 0,
     coerce        => 1,
-    documentation => q[The output YAML config reset file.],
+    documentation => q[The output YAML configuration reset file.],
     cmd_flag      => 'out',
 );
 

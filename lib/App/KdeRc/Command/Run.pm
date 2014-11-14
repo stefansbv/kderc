@@ -18,7 +18,9 @@ sub execute {
     my ( $self ) = @_;
 
     my $res = App::KdeRc::Resource->new(
-        resource_file => $self->resource_file );
+        resource_file       => $self->resource_file,
+        resource_reset_file => $self->resource_reset_file,
+    );
     my $iter = $res->resource_iter;
 
     say "";
