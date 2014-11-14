@@ -39,7 +39,7 @@ this particular case: Perl and a number of required modules (`Moose`,
 Two items in the `kde-font.yml` example configuration file:
 
 
-```YAML
+```yml
 # The setting section:
 ---
 settings:
@@ -77,14 +77,14 @@ Quick Usage
 Run the KDE configure commands but use `--dryrun`, first, to see how
 the commands will look like and how will be the values changed:
 
-```
-% kderc run --in examples/kde-fonts.yml --dryrun
+```sh
+$ kderc run --in examples/kde-fonts.yml --dryrun
 ```
 
 Change all the settings in the KDE fonts configuration section:
 
-```
-% kderc run --in examples/kde-fonts.yml
+```sh
+$ kderc run --in examples/kde-fonts.yml
 ```
 
 The previous command automaticaly created a new `YAML` file:
@@ -92,14 +92,14 @@ The previous command automaticaly created a new `YAML` file:
 configuration values.  We can now restore the old settings, if we
 want:
 
-```
-% kderc run --in examples/kde-fonts-reset-2014-11-11T17:11:58.yml
+```sh
+$ kderc run --in examples/kde-fonts-reset-2014-11-11T17:11:58.yml
 ```
 
 There is also a `--out` option for the YAML configuration reset file:
 
-```
-% kderc run --in examples/kde-fonts.yml --out reset.yml
+```sh
+$ kderc run --in examples/kde-fonts.yml --out reset.yml
 ```
 
 License And Copyright
