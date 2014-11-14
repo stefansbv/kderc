@@ -3,7 +3,7 @@ kderc
 Ștefan Suciu
 2014-11-11
 
-Version: 0.005 alpha
+Version: 0.006 alpha
 
 A `KDE` configuration helper tool.
 
@@ -37,6 +37,7 @@ this particular case: Perl and a number of required modules (`Moose`,
 `MooseX::App`, etc.).
 
 Two items in the `kde-font.yml` example configuration file:
+
 
 ```YAML
 ---
@@ -79,13 +80,16 @@ the commands will look like and how will be the values changed:
 % kderc run --in examples/kde-fonts.yml --dryrun
 ```
 
-Change the KDE fonts configuration section:
+Change all the settings in the KDE fonts configuration section:
 
 ```
 % kderc run --in examples/kde-fonts.yml
 ```
 
-We can now restore the old setings, if we want:
+The previous command created a new `YAML` file:
+`examples/kde-fonts-reset-2014-11-11T17:11:58.yml` with the old values.
+
+We can now restore the old settings, if we want:
 
 ```
 % kderc run --in examples/kde-fonts-reset-2014-11-11T17:11:58.yml
