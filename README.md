@@ -39,7 +39,7 @@ this particular case: Perl and a number of required modules (`Moose`,
 Two items in the `kde-font.yml` example configuration file:
 
 
-```YAML
+```yaml
 ---
 settings:
   -
