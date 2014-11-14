@@ -39,7 +39,8 @@ this particular case: Perl and a number of required modules (`Moose`,
 Two items in the `kde-font.yml` example configuration file:
 
 
-```yaml
+```YAML
+# The setting section:
 ---
 settings:
   -
@@ -51,7 +52,7 @@ settings:
     file: kdeglobals
     group: General
     key: fixed
-    value: Monospace,11,-1,5,50,0,0,0,0,0
+    value: 'Monospace,11,-1,5,50,0,0,0,0,0'
 ```
 
 
@@ -86,15 +87,20 @@ Change all the settings in the KDE fonts configuration section:
 % kderc run --in examples/kde-fonts.yml
 ```
 
-The previous command created a new `YAML` file:
-`examples/kde-fonts-reset-2014-11-11T17:11:58.yml` with the old values.
-
-We can now restore the old settings, if we want:
+The previous command automaticaly created a new `YAML` file:
+`examples/kde-fonts-reset-2014-11-11T17:11:58.yml` with the old
+configuration values.  We can now restore the old settings, if we
+want:
 
 ```
 % kderc run --in examples/kde-fonts-reset-2014-11-11T17:11:58.yml
 ```
 
+There is also a `--out` option for the YAML configuration reset file:
+
+```
+% kderc run --in examples/kde-fonts.yml --out reset.yml
+```
 
 License And Copyright
 ---------------------
