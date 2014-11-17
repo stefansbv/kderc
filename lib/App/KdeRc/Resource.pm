@@ -13,8 +13,6 @@ use namespace::autoclean;
 use YAML::Tiny;
 use Try::Tiny;
 use Path::Tiny;
-use File::Basename;
-use DateTime;
 
 use App::KdeRc::Resource::Read;
 use App::KdeRc::Resource::Write;
@@ -86,25 +84,6 @@ has 'resource_reset_file' => (
     required => 0,
 );
 
-has 'reset_file_path' => (
-    is       => 'ro',
-    isa      => Path,
-    lazy     => 1,
-    required => 1,
-    default  => sub {
-        my $self = shift;
-        return $self->resource_reset_file if $self->resource_reset_file;
-        my $file = $self->resource_file;
-        my ( $name, $path, $ext ) = fileparse( $file, qr/\.[^\.]+/ );
-        $name =~ s{-reset.+$}{};
-        my $dt = DateTime->now;
-        my $datetime = $dt->datetime;
-        $datetime =~ s{[:]}{_}g;
-        $name = "${name}-reset-${datetime}$ext";
-        return path( $path, $name );
-    },
-);
-
 has 'reader' => (
     is      => 'rw',
     isa     => 'App::KdeRc::Resource::Read',
@@ -123,7 +102,7 @@ has 'writer' => (
     default => sub {
         my $self = shift;
         App::KdeRc::Resource::Write->new(
-            resource_file => $self->reset_file_path );
+            resource_file => $self->resource_reset_file );
     },
 );
 

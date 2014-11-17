@@ -74,7 +74,7 @@ sub kde_config_write_reset {
     $res->writer->metadata($metadata);
     $res->writer->contents(\@settings);
     $res->writer->create_yaml;
-    my $reset_file = $res->reset_file_path;
+    my $reset_file = $self->resource_reset_file;
     say "Wrote reset file: $reset_file.";
     return;
 }

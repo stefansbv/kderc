@@ -5,9 +5,11 @@ package App::KdeRc;
 use utf8;
 use Moose;
 use 5.0100;
-
 use MooseX::App qw(Color);
 use MooseX::Types::Path::Tiny qw(Path File);
+use Path::Tiny;
+use File::Basename;
+use DateTime;
 
 with qw(App::KdeRc::Role::Utils);
 
@@ -41,6 +43,16 @@ option 'resource_reset_file' => (
     coerce        => 1,
     documentation => q[The output YAML configuration reset file.],
     cmd_flag      => 'out',
+    default       => sub {
+        my $self = shift;
+        my $file = $self->resource_file;
+        my ( $name, $path, $ext ) = fileparse( $file, qr/\.[^\.]+/ );
+        $name   =~ s{-reset.+$}{};
+        my $now = DateTime->now->datetime;
+        $now    =~ s{[:]}{_}g;
+        $name   = "${name}-reset-${now}$ext";
+        return path( $path, $name );
+    },
 );
 
 has 'test_file_name' => (
