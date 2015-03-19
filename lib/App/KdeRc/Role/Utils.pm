@@ -41,8 +41,10 @@ sub kde_config_write {
     push @args, '--file', quote_string($rec->file);
     push @args, '--group', quote_string($_) foreach @{$rec->group};
     push @args, '--key', quote_string($rec->key);
+    push @args, '--type', quote_string($rec->type) if $rec->type;
+    push @args, '--';
     push @args, quote_string($rec->value);
-    #say "# $cmd @args" if $dryrun;
+    say "# $cmd @args" if $self->verbose;
     my ( $stdout, $stderr, $exit ) = capture { system( $cmd, @args ) };
     die "Can't execute '$cmd'!\n Error: $stderr"     if $stderr;
     die "Can't execute '$cmd'! Error: exitval=$exit" if $exit != 0;
@@ -65,6 +67,7 @@ sub kde_config_read {
 
 sub quote_string {
     my $str = shift;
+    return unless $str;
     $str    = qq{$str} if $str =~ m{\s};
     return $str;
 }

@@ -40,6 +40,13 @@ has 'value' => (
     required => 1,
 );
 
+has 'type' => (
+    is       => 'rw',
+    isa      => enum( [qw(bool string)] ),
+    traits   => [qw(Clone)],
+    required => 0,
+);
+
 
 __PACKAGE__->meta->make_immutable;
 
