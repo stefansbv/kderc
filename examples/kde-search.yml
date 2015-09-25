@@ -1,0 +1,24 @@
+---
+kde:
+  version: 4
+  subversion: 14
+  patch: 2
+  configpath: '~/.kde'
+  description: 'Disable Baloo desktop search'
+settings:
+  -
+     file: baloofilerc
+     group: 'Basic Settings'
+     key: Indexing-Enabled
+     value: false
+# Does NOT work because of '[$e]'!, kwriteconfig limitation?!
+#  -
+#     file: baloofilerc
+#     group: General
+#     key: 'exclude folders[$e]'
+#     value: '/mnt/hd/,$HOME/'
+#  -
+#     file: baloofilerc
+#     group: General
+#     key: 'folders[$e]'
+#     value: ''

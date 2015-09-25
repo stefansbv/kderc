@@ -1,0 +1,18 @@
+---
+kde:
+  version: 4
+  subversion: 14
+  patch: 2
+  configpath: '~/.kde'
+  description: 'Launch notifications'
+settings:
+  -
+     file: klaunchrc
+     group: BusyCursorSettings
+     key: Timeout
+     value: 1
+  -
+     file: klaunchrc
+     group: TaskbarButtonSettings
+     key: Timeout
+     value: 1
