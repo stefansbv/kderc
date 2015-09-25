@@ -41,12 +41,14 @@ sub execute {
         my $current_value = $self->kde_config_read($rec);
         $orig->value($current_value);
         push @origs, $orig;
-        $rec->file( $self->test_file_name )
-            if $self->dryrun;    # overwrite output file
-        $self->kde_config_write($rec, $self->dryrun);
+        if ($self->dryrun) {
+            $rec->file( $self->test_file_name );
+            unlink $self->test_file_name;
+        }                                    # overwrite output file
+        $self->kde_config_write($rec);
     }
 
-    $self->kde_config_write_reset( $res, @origs );
+    $self->kde_config_write_reset( $res, @origs ) unless $self->dryrun;
 
     say "Output file path [dry-run]: ", $self->test_file_path->stringify
         if $self->dryrun;

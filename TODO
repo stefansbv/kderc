@@ -1,0 +1,28 @@
+1. Make settings for:
+
+share/config/kwinrulesrc
+
+2. How Can I change wallpaper from CLI?
+
+Giuseppe Calà jiveaxe at gmail.com
+Wed Sep 5 20:28:03 UTC 2012
+
+Actually, it is possible to change all kde settings with kwriteconfig
+command tool; f.i.
+
+kwriteconfig --file plasma-desktop-appletsrc --group Containments
+--group # --group Wallpaper --group image --key wallpaper --type
+string /path/to/file/image
+
+As Nicolas stated, plasma has more containments and you need to get
+the correct group number and replace # in the command above.
+
+List containments:
+
+% grep 'Containments.*Wallpaper'  ~/.kde/share/config/plasma-desktop-appletsrc
+
+Exemplu (NU MERGE!):
+
+% kwriteconfig --file plasma-desktop-appletsrc --group Containments --group 22 --group Wallpaper --group image --key wallpaper --type string /usr/share/wallpapers/Auros/
+
+% kquitapp plasma-desktop ; sleep 1 ; plasma-desktop

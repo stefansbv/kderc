@@ -4,7 +4,6 @@ use 5.0100;
 use utf8;
 use Moose::Role;
 use MooseX::App::Role;
-
 use Capture::Tiny ':all';
 use YAML::Tiny;
 use Path::Tiny;
@@ -34,8 +33,8 @@ sub get_kde_version {
     return $stdout;
 }
 
-sub kde_config_write {
-    my ($self, $rec, $dryrun) = @_;
+sub kde_config_prepare {
+    my ($self, $rec) = @_;
     my $cmd = 'kwriteconfig';
     my @args;
     push @args, '--file', quote_string($rec->file);
@@ -44,6 +43,12 @@ sub kde_config_write {
     push @args, '--type', quote_string($rec->type) if $rec->type;
     push @args, '--';
     push @args, quote_string($rec->value);
+    return ($cmd, @args);
+}
+
+sub kde_config_write {
+    my ($self, $rec) = @_;
+    my ($cmd, @args) = $self->kde_config_prepare($rec);
     say "# $cmd @args" if $self->verbose;
     my ( $stdout, $stderr, $exit ) = capture { system( $cmd, @args ) };
     die "Can't execute '$cmd'!\n Error: $stderr"     if $stderr;

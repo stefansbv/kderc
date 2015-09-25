@@ -102,6 +102,25 @@ There is also a `--out` option for the YAML configuration reset file:
 $ kderc run --in examples/kde-fonts.yml --out reset.yml
 ```
 
+
+Known bugs
+----------
+
+Using 'Shell Expansion'
+
+So called Shell Expansion can be used to provide more dynamic default
+values. With shell expansion the value of a configuration key can be
+constructed from the value of an environment variable or from the
+output of a shell command.
+
+To enable shell expansion for a configuration entry, the key must be
+followed by [$e].  Normally the expanded form is written into the
+users configuration file after first use. To prevent that, it is
+recommend to lock the configuration entry down by using [$ie].
+
+! Unfortunately there seems no way to use this with 'kwriteconfig'.
+
+
 License And Copyright
 ---------------------
 
