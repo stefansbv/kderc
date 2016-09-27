@@ -1,4 +1,6 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
+# PODNAME: kderc-notify.pl
+# ABSTRACT: KDE directory/file change notifications
 
 use strict;
 use warnings;

@@ -1,5 +1,7 @@
 package App::KdeRc::Role::Utils;
 
+# ABSTRACT: KdeRc utilities
+
 use 5.0100;
 use utf8;
 use Moose::Role;
