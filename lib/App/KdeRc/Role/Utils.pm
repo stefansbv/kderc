@@ -9,16 +9,18 @@ use MooseX::App::Role;
 use Capture::Tiny ':all';
 use YAML::Tiny;
 use Path::Tiny;
+use File::Which qw(which where);
 
 # kde4-config --localprefix -> /home/user/.kde/
 
 sub kde_config_path {
     my $cmd  = 'kde4-config';
-    my @args = ('--path', 'config');
+    my @args = ( '--path', 'config' );
     my ( $stdout, $stderr, $exit ) = capture { system( $cmd, @args ) };
-    die "Can't determine KDE config path!\n Error: $stderr"     if $stderr;
-    die "Can't determine KDE config path! Error: exitval=$exit" if $exit != 0;
-    die "Can't determine KDE config path! Error: no output"     if !$stdout;
+    die "Can't determine KDE config path!\n Error: $stderr" if $stderr;
+    die "Can't determine KDE config path! Error: exitval=$exit"
+        if $exit != 0;
+    die "Can't determine KDE config path! Error: no output" if !$stdout;
     foreach my $path ( split /:/, $stdout ) {
         return $path if $path =~ m{^/home};
     }
@@ -26,18 +28,34 @@ sub kde_config_path {
 
 sub get_kde_version {
     my $cmd  = 'kde4-config';
-    my @args = ('--kde-version');
-    my ( $stdout, $stderr, $exit ) = capture { system( $cmd, @args ) };
-    die "Can't determine KDE version!\n Error: $stderr"     if $stderr;
-    die "Can't determine KDE version! Error: exitval=$exit" if $exit != 0;
-    die "Can't determine KDE version! Error: no output"     if !$stdout;
-    chomp $stdout;
-    return $stdout;
+    my $cmd_path = which $cmd;
+    if ($cmd_path) {
+        my @args = ('--kde-version');
+        my ( $stdout, $stderr, $exit ) = capture { system( $cmd, @args ) };
+        die "Can't determine KDE version!\n Error: $stderr"     if $stderr;
+        die "Can't determine KDE version! Error: exitval=$exit" if $exit != 0;
+        die "Can't determine KDE version! Error: no output"     if !$stdout;
+        chomp $stdout;
+        return $stdout;
+    }
+    $cmd  = 'plasmashell';
+    $cmd_path = which $cmd;
+    if ($cmd_path) {
+        my @args = ('--version');
+        my ( $version, $stderr, $exit ) = capture { system( $cmd, @args ) };
+        die "Can't determine KDE version!\n Error: $stderr"     if $stderr;
+        die "Can't determine KDE version! Error: exitval=$exit" if $exit != 0;
+        die "Can't determine KDE version! Error: no output"     if !$version;
+        $version =~ s/plasmashell\s//;
+        my @parts = split /[.]/, $version;
+        my ($maj) = $parts[-1] =~ /^(\d+)/;
+        return $maj || 0;
+    }
 }
 
 sub kde_config_prepare {
     my ($self, $rec) = @_;
-    my $cmd = 'kwriteconfig';
+    my $cmd = $self->get_kde_version == 5 ? 'kwriteconfig5' : 'kwriteconfig';
     my @args;
     push @args, '--file', quote_string($rec->file);
     push @args, '--group', quote_string($_) foreach @{$rec->group};
