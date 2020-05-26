@@ -62,15 +62,20 @@ has 'test_file_name' => (
     default  => sub {'KDEtest.ini'},
 );
 
-has 'kde_version' => (
+has '_kde_version' => (
     is      => 'ro',
-    isa     => 'Str',
+    isa     => 'ArrayRef',
     builder => '_build_kde_version',
 );
 
 sub _build_kde_version {
     my $self = shift;
     return $self->get_kde_version;
+}
+
+sub kde_version_string {
+    my $self = shift;
+    return join '.', @{ $self->get_kde_version };
 }
 
 __PACKAGE__->meta->make_immutable;
