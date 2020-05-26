@@ -43,16 +43,21 @@ sub get_kde_version {
             die "Can't determine KDE version! Error: exitval=$exit"
                 if $exit != 0;
             die "Can't determine KDE version! Error: no output" if !$version;
+            chomp $version;
             my @parts = split /[.]/, $version;
-            my ($maj) = $parts[0];
-            return $maj || 0;
+            return \@parts;
         }
     }
 }
 
+sub get_kde_version_major {
+    my $self = shift;
+
+}
+
 sub kde_config_prepare {
     my ($self, $rec) = @_;
-    my $cmd = $self->get_kde_version == 5 ? 'kwriteconfig5' : 'kwriteconfig';
+    my $cmd = $self->get_kde_version_major == 5 ? 'kwriteconfig5' : 'kwriteconfig';
     my @args;
     push @args, '--file', quote_string($rec->file);
     push @args, '--group', quote_string($_) foreach @{$rec->group};
@@ -75,7 +80,7 @@ sub kde_config_write {
 
 sub kde_config_read {
     my ($self, $rec) = @_;
-    my $cmd = $self->get_kde_version == 5 ? 'kwriteconfig5' : 'kwriteconfig';
+    my $cmd = $self->get_kde_version_major == 5 ? 'kreadconfig5' : 'kreadconfig';
     my @args;
     push @args, '--file', quote_string($rec->file);
     push @args, '--group', quote_string($_) foreach @{$rec->group};
