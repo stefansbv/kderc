@@ -21,7 +21,7 @@ sub execute {
     my $iter = $res->resource_iter;
 
     say "";
-    say "KDE version = ", $self->kde_version;
+    say "KDE version = ", $self->kde_version_string;
     say "Resource:";
     say "  File        = ", $self->resource_file;
     say "  Version     = ", $res->metadata->version;
