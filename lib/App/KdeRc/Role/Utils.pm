@@ -52,7 +52,7 @@ sub get_kde_version {
 
 sub get_kde_version_major {
     my $self = shift;
-
+    return $self->get_kde_version->[0];
 }
 
 sub kde_config_prepare {
