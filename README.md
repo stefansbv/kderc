@@ -28,13 +28,13 @@ existing configurations before applying the new configurations and
 create a so called `reset` `YAML` file.  This reset file can be used to
 restore the old configurations.
 
-A planned feature is to implement the export command.  This command
-will generate a custom shell script like the `kdeSetup.sh` from the
-`linuxTweaks` project.
+Another feature is the export command.  This command generates a
+custom shell script like the `kdeSetup.sh` from the `linuxTweaks`
+project.
 
-The down side of this approach is a much heavier dependency chain, in
-this particular case: Perl and a number of required modules (`Moose`,
-`MooseX::App`, etc.).
+The down side of this project's approach is a much heavier dependency
+chain, in this particular case: Perl and a number of required modules
+(`Moose`, `MooseX::App`, etc.).
 
 Two items in the `kde-font.yml` example configuration file:
 
@@ -65,6 +65,12 @@ KDE4:
 - kwriteconfig
 - kreadconfig
 
+or 
+
+KDE5:
+- kwriteconfig5
+- kreadconfig5
+
 Perl and the required modules:
 - Moose
 - MooseX::App
@@ -78,7 +84,7 @@ Run the KDE configure commands but use `--dryrun`, first, to see how
 the commands will look like and how will be the values changed:
 
 ```sh
-$ kderc run --in examples/kde-fonts.yml --dryrun
+$ kderc run --in examples/kde-font.yml --dryrun
 ```
 
 Change all the settings in the KDE fonts configuration section:
