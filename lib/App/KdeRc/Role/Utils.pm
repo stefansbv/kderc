@@ -14,15 +14,22 @@ use File::Which qw(which where);
 # kde4-config --localprefix -> /home/user/.kde/
 
 sub kde_config_path {
-    my $cmd  = 'kde4-config';
-    my @args = ( '--path', 'config' );
-    my ( $stdout, $stderr, $exit ) = capture { system( $cmd, @args ) };
-    die "Can't determine KDE config path!\n Error: $stderr" if $stderr;
-    die "Can't determine KDE config path! Error: exitval=$exit"
-        if $exit != 0;
-    die "Can't determine KDE config path! Error: no output" if !$stdout;
-    foreach my $path ( split /:/, $stdout ) {
-        return $path if $path =~ m{^/home};
+    my $self = shift;
+    my $major = $self->get_kde_version_major;
+    if ( $major == 4 ) {
+        my $cmd  = 'kde4-config';
+        my @args = ( '--path', 'config' );
+        my ( $stdout, $stderr, $exit ) = capture { system( $cmd, @args ) };
+        die "Can't determine KDE config path!\n Error: $stderr" if $stderr;
+        die "Can't determine KDE config path! Error: exitval=$exit"
+            if $exit != 0;
+        die "Can't determine KDE config path! Error: no output" if !$stdout;
+        foreach my $path ( split /:/, $stdout ) {
+            return $path if $path =~ m{^/home};
+        }
+    }
+    if ( $major == 5 ) {
+        return '~/.config';
     }
 }
 
@@ -44,6 +51,7 @@ sub get_kde_version {
                 if $exit != 0;
             die "Can't determine KDE version! Error: no output" if !$version;
             chomp $version;
+            $version =~ s/plasmashell\s//;
             my @parts = split /[.]/, $version;
             return \@parts;
         }
