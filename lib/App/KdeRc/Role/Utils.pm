@@ -27,29 +27,26 @@ sub kde_config_path {
 }
 
 sub get_kde_version {
-    my $cmd  = 'kde4-config';
-    my $cmd_path = which $cmd;
-    if ($cmd_path) {
-        my @args = ('--kde-version');
-        my ( $stdout, $stderr, $exit ) = capture { system( $cmd, @args ) };
-        die "Can't determine KDE version!\n Error: $stderr"     if $stderr;
-        die "Can't determine KDE version! Error: exitval=$exit" if $exit != 0;
-        die "Can't determine KDE version! Error: no output"     if !$stdout;
-        chomp $stdout;
-        return $stdout;
-    }
-    $cmd  = 'plasmashell';
-    $cmd_path = which $cmd;
-    if ($cmd_path) {
-        my @args = ('--version');
-        my ( $version, $stderr, $exit ) = capture { system( $cmd, @args ) };
-        die "Can't determine KDE version!\n Error: $stderr"     if $stderr;
-        die "Can't determine KDE version! Error: exitval=$exit" if $exit != 0;
-        die "Can't determine KDE version! Error: no output"     if !$version;
-        $version =~ s/plasmashell\s//;
-        my @parts = split /[.]/, $version;
-        my ($maj) = $parts[-1] =~ /^(\d+)/;
-        return $maj || 0;
+    my $self = shift;
+    my @cmds = (
+        [ 'kde4-config', '--kde-version' ],
+        [ 'plasmashell', '--version' ],
+    );
+    foreach my $rec ( (@cmds) ) {
+        my $cmd      = shift @{$rec};
+        my $cmd_path = which $cmd;
+        if ($cmd_path) {
+            my @args = @{$rec};
+            my ( $version, $stderr, $exit )
+                = capture { system( $cmd, @args ) };
+            die "Can't determine KDE version!\n Error: $stderr" if $stderr;
+            die "Can't determine KDE version! Error: exitval=$exit"
+                if $exit != 0;
+            die "Can't determine KDE version! Error: no output" if !$version;
+            my @parts = split /[.]/, $version;
+            my ($maj) = $parts[0];
+            return $maj || 0;
+        }
     }
 }
 
@@ -78,7 +75,7 @@ sub kde_config_write {
 
 sub kde_config_read {
     my ($self, $rec) = @_;
-    my $cmd = 'kreadconfig';
+    my $cmd = $self->get_kde_version == 5 ? 'kwriteconfig5' : 'kwriteconfig';
     my @args;
     push @args, '--file', quote_string($rec->file);
     push @args, '--group', quote_string($_) foreach @{$rec->group};
